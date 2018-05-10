@@ -1,9 +1,11 @@
 require 'httparty'
 require 'json'
+require './lib/roadmap.rb'
 
 class Kele
   include HTTParty
   attr_reader :auth_token
+  include Roadmap
 
   def initialize(email, password)
     response = self.class.post(base_url("sessions"), body: { email: email, password: password })
